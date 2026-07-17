@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Package — Beki Creative</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; -webkit-font-smoothing: antialiased; }
+    @keyframes drift1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(4%,6%) scale(1.1); } }
+    @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-6%,4%) scale(1.14); } }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+    @keyframes fabPulse { 0%,100% { box-shadow:0 10px 30px rgba(0,0,0,.4), 0 0 0 0 rgba(210,166,60,.5); } 50% { box-shadow:0 10px 30px rgba(0,0,0,.4), 0 0 0 16px rgba(210,166,60,0); } }
+  </style>
+</helmet>
+<x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="1,1" style="position:absolute; left:-9999px; top:0; width:1px; height:1px; overflow:hidden; pointer-events:none;"></x-import>
+
+<div ref="{{ rootRef }}" style="background:var(--bk-bg,#0A0F1E); color:#FFFFFF; font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif; min-height:100vh; overflow-x:hidden;">
+  <a href="{{ bookHref }}" title="Book a Shoot" aria-label="Book a Shoot" style="position:fixed; z-index:45; right:clamp(18px,4vw,34px); bottom:clamp(18px,4vw,34px); width:62px; height:62px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--bk-accent,#D2A63C); color:#0A0F1E; text-decoration:none; box-shadow:0 10px 30px rgba(0,0,0,.4); animation:fabPulse 3s ease-in-out infinite; transition:transform .2s cubic-bezier(.32,1.6,.5,1);" style-hover="transform:scale(1.08)" style-active="transform:scale(.9)">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3.2"/></svg>
+  </a>
+
+
+  <div style="position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none;">
+    <div style="position:absolute; width:70vmax; height:70vmax; left:-20%; top:-25%; border-radius:50%; filter:blur(90px); opacity:calc(.5 * var(--bk-glow,1)); background:radial-gradient(circle, var(--bk-glow-1,rgba(32,71,136,.85)), transparent 65%); animation:drift1 28s ease-in-out infinite;"></div>
+    <div style="position:absolute; width:55vmax; height:55vmax; right:-15%; top:6%; border-radius:50%; filter:blur(90px); opacity:calc(.45 * var(--bk-glow,1)); background:radial-gradient(circle, var(--bk-glow-2,rgba(210,166,60,.45)), transparent 65%); animation:drift2 34s ease-in-out infinite;"></div>
+  </div>
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:18px clamp(20px,5vw,64px); background:rgba(10,15,30,.72); backdrop-filter:blur(20px) saturate(1.6); -webkit-backdrop-filter:blur(20px) saturate(1.6); border-bottom:1px solid rgba(255,255,255,.08);">
+    <a href="{{ backHref }}" style="font-size:19px; font-weight:800; letter-spacing:.5px; color:#FFFFFF; text-decoration:none;">BEKI <span style="color:var(--bk-accent,#D2A63C);">CREATIVE</span></a>
+    <a href="{{ backHref }}" style="display:inline-flex; align-items:center; gap:8px; color:rgba(235,235,245,.75); text-decoration:none; font-size:15px; font-weight:600;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: static"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+      All packages
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:relative; z-index:1; padding:clamp(56px,8vw,104px) clamp(20px,5vw,64px) clamp(36px,4vw,56px); max-width:920px; margin:0 auto; text-align:center;">
+    <div key="{{ pkgKey }}" style="animation:fadeUp .6s ease both;">
+      <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 15px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); font-size:13px; font-weight:600; color:rgba(235,235,245,.7); margin-bottom:24px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:{{ regionFlag }};"></span>
+        {{ regionLabel }}
+      </div>
+      <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--bk-accent,#D2A63C); margin-bottom:16px;">{{ badge }}</div>
+      <h1 style="font-family:'Playfair Display', Georgia, serif; font-weight:600; font-size:clamp(40px,6vw,76px); letter-spacing:-1px; line-height:1.04; margin:0 0 18px;">{{ name }}</h1>
+      <p style="font-size:clamp(16px,2vw,20px); color:rgba(235,235,245,.68); max-width:600px; margin:0 auto 26px; line-height:1.6;">{{ tagline }}</p>
+      <div style="display:inline-flex; align-items:baseline; gap:8px; margin-bottom:34px;">
+        <span style="font-size:clamp(34px,5vw,52px); font-weight:800; letter-spacing:-1px;">{{ price }}</span>
+        <span style="font-size:16px; color:rgba(235,235,245,.5); font-weight:600;">{{ currency }}</span>
+      </div>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; background:linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.1)); backdrop-filter:blur(18px) saturate(1.8); -webkit-backdrop-filter:blur(18px) saturate(1.8); border:1px solid rgba(255,255,255,.35); box-shadow:inset 0 1px 0 rgba(255,255,255,.45), 0 8px 24px rgba(0,0,0,.28); color:#FFFFFF; text-decoration:none; font-weight:700; font-size:17px; padding:16px 32px; border-radius:999px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          Book on WhatsApp
+        </a>
+        <a href="{{ emailHref }}" style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,.08); backdrop-filter:blur(16px) saturate(1.6); -webkit-backdrop-filter:blur(16px) saturate(1.6); border:1px solid rgba(255,255,255,.22); box-shadow:inset 0 1px 0 rgba(255,255,255,.25); color:#FFFFFF; text-decoration:none; font-weight:600; font-size:17px; padding:16px 28px; border-radius:999px; transition:transform .18s cubic-bezier(.32,1.6,.5,1);" style-active="transform:scale(.96)">Email Beki</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOWCASE + INCLUDED -->
+  <div style="position:relative; z-index:1; padding:clamp(24px,4vw,48px) clamp(20px,5vw,64px); max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:40px; align-items:start;">
+    <div>
+      <image-slot id="{{ shotId }}" style="width:100%; aspect-ratio:4/5; border-radius:24px; display:block;" shape="rounded" radius="24" placeholder="Drop a signature photo for this package"></image-slot>
+    </div>
+    <div>
+      <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--bk-accent,#D2A63C); margin-bottom:10px;">What's included</div>
+      <h2 style="font-size:clamp(26px,3.4vw,38px); font-weight:800; letter-spacing:-1px; margin:0 0 24px;">Everything in this package.</h2>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <sc-for list="{{ features }}" as="f" hint-placeholder-count="5">
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <span style="flex:none; margin-top:1px; width:22px; height:22px; border-radius:50%; background:var(--bk-accent-soft,rgba(210,166,60,.14)); color:var(--bk-accent,#D2A63C); display:flex; align-items:center; justify-content:center;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+          </span>
+          <span style="font-size:16px; color:rgba(235,235,245,.82); line-height:1.5;">{{ f }}</span>
+        </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:26px; padding:18px 20px; background:rgba(255,255,255,.05); backdrop-filter:blur(20px) saturate(1.5); -webkit-backdrop-filter:blur(20px) saturate(1.5); border:1px solid rgba(255,255,255,.14); box-shadow:inset 0 1px 0 rgba(255,255,255,.12); border-radius:16px;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:rgba(235,235,245,.5); margin-bottom:6px;">Ideal for</div>
+        <div style="font-size:15px; color:rgba(235,235,245,.78); line-height:1.55;">{{ idealFor }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD-ONS -->
+  <div style="position:relative; z-index:1; padding:clamp(40px,5vw,72px) clamp(20px,5vw,64px); max-width:1080px; margin:0 auto;">
+    <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--bk-accent,#D2A63C); margin-bottom:10px;">Add-ons</div>
+    <h2 style="font-size:clamp(24px,3vw,34px); font-weight:800; letter-spacing:-1px; margin:0 0 26px;">Make it bigger.</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px;">
+      <sc-for list="{{ addons }}" as="ad" hint-placeholder-count="6">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 20px; background:rgba(255,255,255,.05); backdrop-filter:blur(20px) saturate(1.5); -webkit-backdrop-filter:blur(20px) saturate(1.5); border:1px solid rgba(255,255,255,.14); box-shadow:inset 0 1px 0 rgba(255,255,255,.12); border-radius:14px;"><span style="font-size:14px; font-weight:600;">{{ ad.name }}</span><span style="font-size:14px; font-weight:800; color:var(--bk-accent,#D2A63C);">{{ ad.price }}</span></div>
+      </sc-for>
+    </div>
+    <div style="font-size:13px; color:rgba(235,235,245,.45); margin-top:16px;">{{ addonNote }}</div>
+  </div>
+
+  <!-- OTHER PACKAGES -->
+  <div style="position:relative; z-index:1; padding:clamp(24px,4vw,40px) clamp(20px,5vw,64px); max-width:1080px; margin:0 auto;">
+    <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--bk-accent,#D2A63C); margin-bottom:18px;">Other packages</div>
+    <div style="display:flex; flex-wrap:wrap; gap:12px;">
+      <sc-for list="{{ others }}" as="o" hint-placeholder-count="4">
+      <a href="{{ o.href }}" style="display:inline-flex; align-items:center; gap:10px; padding:14px 20px; background:rgba(255,255,255,.05); backdrop-filter:blur(20px) saturate(1.5); -webkit-backdrop-filter:blur(20px) saturate(1.5); border:1px solid rgba(255,255,255,.14); box-shadow:inset 0 1px 0 rgba(255,255,255,.12); border-radius:14px; text-decoration:none; color:#FFFFFF; transition:transform .18s ease;" style-hover="transform:translateY(-3px)">
+        <span style="font-size:15px; font-weight:700;">{{ o.name }}</span>
+        <span style="font-size:14px; color:rgba(235,235,245,.55);">{{ o.price }}</span>
+      </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div style="position:relative; z-index:1; padding:clamp(48px,6vw,88px) clamp(20px,5vw,64px); max-width:760px; margin:0 auto; text-align:center;">
+    <h2 style="font-family:'Playfair Display', Georgia, serif; font-weight:600; font-size:clamp(30px,4vw,48px); letter-spacing:-1px; margin:0 0 14px;">Ready when you are.</h2>
+    <p style="font-size:16px; color:rgba(235,235,245,.6); margin:0 0 30px; line-height:1.6;">Send a message and we'll confirm your date and final quote personally — usually within the hour.</p>
+    <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; background:var(--bk-accent,#D2A63C); color:#0A0F1E; text-decoration:none; font-weight:700; font-size:17px; padding:16px 34px; border-radius:999px; transition:transform .18s cubic-bezier(.32,1.6,.5,1);" style-active="transform:scale(.96)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      Book the {{ name }}
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="position:relative; z-index:1; border-top:1px solid rgba(255,255,255,.08); padding:36px clamp(20px,5vw,64px); display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between; max-width:1080px; margin:0 auto;">
+    <a href="{{ backHref }}" style="font-size:15px; font-weight:800; letter-spacing:.5px; color:#FFFFFF; text-decoration:none;">BEKI <span style="color:var(--bk-accent,#D2A63C);">CREATIVE</span></a>
+    <div style="display:flex; gap:22px; flex-wrap:wrap; font-size:14px; color:rgba(235,235,245,.6);">
+      <a href="https://www.instagram.com/beki_creative" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">Instagram</a>
+      <a href="https://www.tiktok.com/@beki_creative" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">TikTok</a>
+      <a href="https://wa.me/251946253661" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">+251 94 625 3661</a>
+    </div>
+    <div style="font-size:13px; color:rgba(235,235,245,.4);">© 2026 Beki Creative</div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Gold&quot;,&quot;Emerald&quot;,&quot;Ice&quot;,&quot;Rose&quot;],&quot;default&quot;:&quot;Gold&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look &amp; feel&quot;},&quot;atmosphere&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Midnight&quot;,&quot;Charcoal&quot;,&quot;Plum&quot;],&quot;default&quot;:&quot;Plum&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look &amp; feel&quot;},&quot;spotlight&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0,&quot;max&quot;:1.4,&quot;step&quot;:0.05,&quot;default&quot;:1.4,&quot;unit&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Look &amp; feel&quot;}}">
+class Component extends DCLogic {
+  state = { region: 'dubai', slug: 'personal-promo' };
+
+  BACK = {
+    dubai: 'Packages.dc.html?region=dubai',
+    ethiopia: 'Packages.dc.html?region=ethiopia'
+  };
+
+  DATA = {
+    dubai: {
+      label: 'Dubai, United Arab Emirates', currency: 'AED', wa: '251946253661',
+      flag: 'linear-gradient(180deg,#00732F 33%,#FFFFFF 33% 66%,#000000 66%)',
+      addons: [
+        { name: 'Extra edited video', price: '+300' },
+        { name: 'Extra 10 photos', price: '+150' },
+        { name: 'Additional location', price: '+200' },
+        { name: 'Drone / aerial shots', price: '+400' },
+        { name: 'Rush 24h delivery', price: '+250' },
+        { name: 'Extra outfit / look', price: '+100' }
+      ],
+      order: ['personal-promo', 'standard', 'brand-business', 'venue', 'private'],
+      packages: {
+        'personal-promo': { name: 'Personal / Promo', badge: 'Most Popular', price: 'from 600', tagline: 'One polished video and a full set of photos — the fastest way to look premium online.', idealFor: 'Personal brands, creators and one-off promos who want a clean, high-end look without a full production.', features: ['1 professionally edited video', '15 retouched photos', '1 outfit / look, 1 location', 'Delivered in 3–5 days', 'Vertical + square formats'] },
+        'standard': { name: 'Standard Package', badge: 'Package', price: 'from 1,000', tagline: 'Double the video, a fuller photo set and priority editing for a bigger moment.', idealFor: 'Businesses and creators who post regularly and want a batch of premium content in one shoot.', features: ['2 professionally edited videos', 'Full retouched photo set', '2 outfits, up to 2 locations', 'Priority editing & color grade', 'Licensed music'] },
+        'brand-business': { name: 'Brand & Business', badge: 'Package', price: 'from 1,500', tagline: 'A tailored content package built around your brand, from direction to delivery.', idealFor: 'Brands and businesses that need a consistent, on-message content library across platforms.', features: ['Custom number of videos', 'Full photo library', 'Multiple locations', 'Brand direction & light scripting', 'Social-ready in every format', 'Revisions included'] },
+        'venue': { name: 'Restaurant / Real Estate', badge: 'On location', price: 'Custom quote', tagline: 'Cinematic coverage of your space, food or property — captured and styled in a single visit.', idealFor: 'Restaurants, hotels, agents and venues that need scroll-stopping location content.', features: ['On-location shoot at your venue', '3+ short-form reels', 'Hero photos of space / dishes', 'Styling & coverage in one visit', 'Optional drone / aerial'] },
+        'private': { name: 'Private / Exclusive', badge: 'By invitation', price: 'On request', tagline: 'A discreet, full-day production with dedicated creative direction and priority delivery.', idealFor: 'High-profile clients who want privacy, a bespoke concept and a same-day priority edit.', features: ['Full dedicated production day', 'Personal creative direction', 'Priority same-day edit', 'NDA & discretion on request', 'Delivered privately'] }
+      }
+    },
+    ethiopia: {
+      label: 'Addis Ababa, Ethiopia', currency: 'ETB', wa: '251946253661',
+      flag: 'linear-gradient(180deg,#078930 33%,#FCDD09 33% 66%,#DA121A 66%)',
+      addons: [
+        { name: 'Extra edited video', price: '+8,000' },
+        { name: 'Extra 10 photos', price: '+4,000' },
+        { name: 'Additional location', price: '+3,000' },
+        { name: 'Drone / aerial shots', price: '+6,000' },
+        { name: 'Rush 24h delivery', price: '+4,000' },
+        { name: 'Extra outfit / look', price: '+2,000' }
+      ],
+      order: ['combo', 'video', 'photo', 'extra', 'private'],
+      packages: {
+        'combo': { name: 'Combo Package', badge: 'Most Popular', price: 'from 17,000', tagline: 'One edited video and a full set of photos with two outfits — our most-booked package.', idealFor: 'Artists, creators and personal brands who want a complete content drop in one shoot.', features: ['1 professionally edited video', '15 retouched photos', '2 outfits / looks', '1 location', 'Delivered in 3–5 days'] },
+        'video': { name: 'Video Only', badge: 'Package', price: '10,000', tagline: 'An hour of coverage cut into one clean, cinematic edit.', idealFor: 'Anyone who just needs a single strong video — a promo, a moment, a release.', features: ['1 hour of coverage', '1 professionally edited video', '1 location', 'Color grade & licensed music'] },
+        'photo': { name: 'Photo Only', badge: 'Package', price: '500 / photo', tagline: 'A professional photo set, retouched and ready to post.', idealFor: 'Portraits, product and personal-brand photos without video.', features: ['Minimum 15 photos', 'Professional retouching', '1 outfit / look', 'Studio or location'] },
+        'extra': { name: 'Same-Day Extra Video', badge: 'Add-on package', price: '+8,000', tagline: 'Add another full video on the same shooting day — no extra setup.', idealFor: 'Clients who want a second concept captured while the team is already on set.', features: ['Additional edited video', 'Same shooting day', 'No extra travel fee', 'Same premium edit'] },
+        'private': { name: 'Private / Exclusive', badge: 'By invitation', price: 'On request', tagline: 'A discreet, full-day production with dedicated creative direction and priority delivery.', idealFor: 'High-profile clients who want privacy, a bespoke concept and a same-day priority edit.', features: ['Full dedicated production day', 'Personal creative direction', 'Priority same-day edit', 'NDA & discretion on request', 'Delivered privately'] }
+      }
+    }
+  };
+
+  componentDidMount() {
+    try {
+      const q = new URLSearchParams(window.location.search);
+      const region = q.get('region');
+      const slug = q.get('slug');
+      const next = {};
+      if (region && this.DATA[region]) next.region = region;
+      const useRegion = next.region || this.state.region;
+      if (slug && this.DATA[useRegion] && this.DATA[useRegion].packages[slug]) next.slug = slug;
+      if (Object.keys(next).length) this.setState(next);
+    } catch (e) {}
+  }
+
+  ACCENTS = {
+    Gold:    { accent: '#D2A63C', soft: 'rgba(210,166,60,.14)', line: 'rgba(210,166,60,.4)', glow2: 'rgba(210,166,60,.45)' },
+    Emerald: { accent: '#3FBF8F', soft: 'rgba(63,191,143,.14)',  line: 'rgba(63,191,143,.4)',  glow2: 'rgba(63,191,143,.4)' },
+    Ice:     { accent: '#5AC8FF', soft: 'rgba(90,200,255,.14)',  line: 'rgba(90,200,255,.4)',  glow2: 'rgba(90,200,255,.4)' },
+    Rose:    { accent: '#E68AA6', soft: 'rgba(230,138,166,.14)', line: 'rgba(230,138,166,.4)', glow2: 'rgba(230,138,166,.42)' }
+  };
+  ATMOS = {
+    Midnight: { bg: '#0A0F1E', glow1: 'rgba(32,71,136,.85)' },
+    Charcoal: { bg: '#111214', glow1: 'rgba(70,74,84,.7)' },
+    Plum:     { bg: '#160F1E', glow1: 'rgba(96,44,120,.8)' }
+  };
+
+  applyTheme(el) {
+    const node = el || this.root;
+    if (!node) return;
+    const a = this.ACCENTS[this.props.accent] || this.ACCENTS.Gold;
+    const at = this.ATMOS[this.props.atmosphere] || this.ATMOS.Midnight;
+    const glow = this.props.spotlight != null ? this.props.spotlight : 1;
+    node.style.setProperty('--bk-accent', a.accent);
+    node.style.setProperty('--bk-accent-soft', a.soft);
+    node.style.setProperty('--bk-accent-line', a.line);
+    node.style.setProperty('--bk-glow-2', a.glow2);
+    node.style.setProperty('--bk-bg', at.bg);
+    node.style.setProperty('--bk-glow-1', at.glow1);
+    node.style.setProperty('--bk-glow', String(glow));
+  }
+
+  componentDidUpdate() { this.applyTheme(); }
+
+  bindReveal = el => {
+    this.root = el;
+    this.applyTheme(el);
+    if (el && !this._revealed) { this._revealed = true; import('./cinematic.js').then(m => m.reveal(el)).catch(() => {}); }
+  };
+
+  renderVals() {
+    const region = this.DATA[this.state.region] ? this.state.region : 'dubai';
+    const r = this.DATA[region];
+    const slug = r.packages[this.state.slug] ? this.state.slug : r.order[0];
+    const p = r.packages[slug];
+    const body = `Hello Beki Creative,\n\nI'm interested in the ${p.name} package (${r.label}).\n\nMy name is: \nI want to shoot: \nPreferred date: \n\nPlease send me the final price.`;
+    const others = r.order.filter(s => s !== slug).map(s => ({
+      name: r.packages[s].name, price: r.packages[s].price,
+      href: `Package.dc.html?region=${region}&slug=${s}`
+    }));
+    return {
+      rootRef: this.bindReveal,
+      backHref: this.BACK[region],
+      bookHref: 'Book.dc.html?region=' + region,
+      regionLabel: r.label, regionFlag: r.flag, currency: r.currency,
+      name: p.name, badge: p.badge, price: p.price, tagline: p.tagline,
+      idealFor: p.idealFor, features: p.features,
+      addons: r.addons,
+      addonNote: `Add-on prices in ${r.currency}. Mention the ones you want and we'll fold them into your quote.`,
+      others,
+      pkgKey: region + '-' + slug,
+      shotId: `pkgshot-${region}-${slug}`,
+      waHref: `https://wa.me/${r.wa}?text=${encodeURIComponent(body)}`,
+      emailHref: `mailto:bekiman980@gmail.com?subject=${encodeURIComponent('Booking — ' + p.name)}&body=${encodeURIComponent(body)}`
+    };
+  }
+}
+
+</script>
+</body>
+</html>

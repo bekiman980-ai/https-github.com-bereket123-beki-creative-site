@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>The Studio — Beki Creative</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; -webkit-font-smoothing: antialiased; }
+    @keyframes drift1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(4%,6%) scale(1.1); } }
+    @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-6%,4%) scale(1.14); } }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+  </style>
+</helmet>
+<x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="1,1" style="position:absolute; left:-9999px; top:0; width:1px; height:1px; overflow:hidden; pointer-events:none;"></x-import>
+
+<div ref="{{ rootRef }}" style="background:#0A0F1E; color:#FFFFFF; font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif; min-height:100vh; overflow-x:hidden;">
+  <div style="position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none;">
+    <div style="position:absolute; width:70vmax; height:70vmax; left:-20%; top:-25%; border-radius:50%; filter:blur(90px); opacity:.5; background:radial-gradient(circle, rgba(32,71,136,.85), transparent 65%); animation:drift1 28s ease-in-out infinite;"></div>
+    <div style="position:absolute; width:55vmax; height:55vmax; right:-15%; top:6%; border-radius:50%; filter:blur(90px); opacity:.45; background:radial-gradient(circle, rgba(210,166,60,.45), transparent 65%); animation:drift2 34s ease-in-out infinite;"></div>
+  </div>
+
+  <div style="position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:18px clamp(20px,5vw,64px); background:rgba(10,15,30,.72); backdrop-filter:blur(20px) saturate(1.6); -webkit-backdrop-filter:blur(20px) saturate(1.6); border-bottom:1px solid rgba(255,255,255,.08);">
+    <a href="{{ homeHref }}" style="font-size:19px; font-weight:800; letter-spacing:.5px; color:#FFFFFF; text-decoration:none;">BEKI <span style="color:#D2A63C;">CREATIVE</span></a>
+    <div style="display:flex; align-items:center; gap:clamp(14px,2vw,28px); flex-wrap:wrap;">
+      <a href="{{ homeHref }}" style="color:rgba(235,235,245,.75); text-decoration:none; font-size:15px; font-weight:500;">Home</a>
+      <a href="{{ packagesHref }}" style="color:rgba(235,235,245,.75); text-decoration:none; font-size:15px; font-weight:500;">Packages</a>
+      <a href="{{ galleryHref }}" style="color:rgba(235,235,245,.75); text-decoration:none; font-size:15px; font-weight:500;">Gallery</a>
+      <a href="{{ bookHref }}" style="background:linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.1)); backdrop-filter:blur(18px) saturate(1.8); -webkit-backdrop-filter:blur(18px) saturate(1.8); border:1px solid rgba(255,255,255,.35); box-shadow:inset 0 1px 0 rgba(255,255,255,.45), 0 8px 24px rgba(0,0,0,.28); color:#FFFFFF; text-decoration:none; font-size:15px; font-weight:700; padding:10px 22px; border-radius:999px; transition:transform .18s cubic-bezier(.32,1.6,.5,1);" style-active="transform:scale(.95)">Book a Shoot</a>
+    </div>
+  </div>
+
+  <div style="position:relative; z-index:1; padding:clamp(48px,7vw,88px) clamp(20px,5vw,64px) clamp(24px,3vw,40px); max-width:920px; margin:0 auto; text-align:center;">
+    <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#D2A63C; margin-bottom:16px; animation:fadeUp .5s ease both;">Creativity is our nature</div>
+    <h1 style="font-family:'Playfair Display', Georgia, serif; font-weight:600; font-size:clamp(36px,5.4vw,68px); letter-spacing:-1px; line-height:1.05; margin:0 0 18px; animation:fadeUp .55s ease both;">Cinematic work,<br/>run like a business.</h1>
+    <p style="font-size:clamp(16px,1.9vw,19px); color:rgba(235,235,245,.65); max-width:620px; margin:0 auto; line-height:1.65; animation:fadeUp .6s ease both;">Beki Creative shoots and edits photo &amp; video for artists, restaurants, real estate, brands and personal clients — in Dubai and Addis Ababa. Fast turnarounds, clear pricing, and a look that reads premium on any feed.</p>
+  </div>
+
+  <div style="position:relative; z-index:1; padding:clamp(24px,4vw,48px) clamp(20px,5vw,64px); max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:40px; align-items:center;">
+    <image-slot id="studio-portrait" style="width:100%; aspect-ratio:4/5; border-radius:24px; display:block;" shape="rounded" radius="24" placeholder="Drop a portrait of Beki / behind-the-scenes"></image-slot>
+    <div>
+      <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#D2A63C; margin-bottom:10px;">How we work</div>
+      <h2 style="font-size:clamp(26px,3.4vw,38px); font-weight:800; letter-spacing:-1px; margin:0 0 22px;">From message to final cut.</h2>
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div style="display:flex; gap:16px; align-items:flex-start;"><div style="flex:none; font-size:26px; font-weight:800; color:rgba(255,255,255,.18); width:44px;">01</div><div><div style="font-weight:700; font-size:16px; margin-bottom:4px;">Inquire</div><div style="font-size:14px; color:rgba(235,235,245,.6); line-height:1.55;">Tell us your package and vision on WhatsApp or the booking page.</div></div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start;"><div style="flex:none; font-size:26px; font-weight:800; color:rgba(255,255,255,.18); width:44px;">02</div><div><div style="font-weight:700; font-size:16px; margin-bottom:4px;">Confirm</div><div style="font-size:14px; color:rgba(235,235,245,.6); line-height:1.55;">We lock the date, location and final quote. A deposit secures your day.</div></div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start;"><div style="flex:none; font-size:26px; font-weight:800; color:rgba(255,255,255,.18); width:44px;">03</div><div><div style="font-weight:700; font-size:16px; margin-bottom:4px;">Shoot</div><div style="font-size:14px; color:rgba(235,235,245,.6); line-height:1.55;">On the day, we handle the creative direction end to end.</div></div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start;"><div style="flex:none; font-size:26px; font-weight:800; color:rgba(255,255,255,.18); width:44px;">04</div><div><div style="font-weight:700; font-size:16px; margin-bottom:4px;">Deliver</div><div style="font-size:14px; color:rgba(235,235,245,.6); line-height:1.55;">Edited, color-graded, delivered — ready to post. Balance due on delivery.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative; z-index:1; padding:clamp(40px,5vw,72px) clamp(20px,5vw,64px); max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px;">
+    <div style="padding:28px; background:rgba(255,255,255,.05); backdrop-filter:blur(20px) saturate(1.5); -webkit-backdrop-filter:blur(20px) saturate(1.5); border:1px solid rgba(255,255,255,.14); box-shadow:inset 0 1px 0 rgba(255,255,255,.12); border-radius:20px;">
+      <div style="color:#FF9500; letter-spacing:3px; font-size:14px; margin-bottom:12px;">★★★★★</div>
+      <div style="font-size:16px; font-weight:600; line-height:1.55; margin-bottom:12px;">"Honestly didn't expect it to come out this clean. Beki understood the vibe from the first message and delivered even faster than promised."</div>
+      <div style="font-size:13px; color:rgba(235,235,245,.55);">Dubai client — social reel</div>
+    </div>
+    <div style="padding:28px; background:rgba(255,255,255,.05); backdrop-filter:blur(20px) saturate(1.5); -webkit-backdrop-filter:blur(20px) saturate(1.5); border:1px solid rgba(255,255,255,.14); box-shadow:inset 0 1px 0 rgba(255,255,255,.12); border-radius:20px;">
+      <div style="color:#FF9500; letter-spacing:3px; font-size:14px; margin-bottom:12px;">★★★★★</div>
+      <div style="font-size:16px; font-weight:600; line-height:1.55; margin-bottom:12px;">"The music video felt like a real production — lighting, movement, everything. My audience noticed immediately."</div>
+      <div style="font-size:13px; color:rgba(235,235,245,.55);">Addis Ababa client — music video</div>
+    </div>
+    <div style="padding:28px; background:rgba(255,255,255,.05); backdrop-filter:blur(20px) saturate(1.5); -webkit-backdrop-filter:blur(20px) saturate(1.5); border:1px solid rgba(255,255,255,.14); box-shadow:inset 0 1px 0 rgba(255,255,255,.12); border-radius:20px;">
+      <div style="color:#FF9500; letter-spacing:3px; font-size:14px; margin-bottom:12px;">★★★★★</div>
+      <div style="font-size:16px; font-weight:600; line-height:1.55; margin-bottom:12px;">"Booked on WhatsApp in the morning, shot in the evening, reel delivered the same week. Effortless."</div>
+      <div style="font-size:13px; color:rgba(235,235,245,.55);">Dubai client — restaurant content</div>
+    </div>
+  </div>
+
+  <div style="position:relative; z-index:1; padding:clamp(24px,3vw,40px) clamp(20px,5vw,64px) clamp(56px,7vw,88px); max-width:760px; margin:0 auto; text-align:center;">
+    <p style="font-size:14px; color:rgba(235,235,245,.5); margin:0 0 26px;">We work in English &amp; Amharic · Dubai &amp; Addis Ababa · Drone available for commercial shoots</p>
+    <a href="{{ bookHref }}" style="display:inline-flex; align-items:center; gap:10px; background:#D2A63C; color:#0A0F1E; text-decoration:none; font-weight:700; font-size:17px; padding:16px 34px; border-radius:999px; transition:transform .18s cubic-bezier(.32,1.6,.5,1);" style-active="transform:scale(.96)">Book a Shoot</a>
+  </div>
+
+  <div style="position:relative; z-index:1; border-top:1px solid rgba(255,255,255,.08); padding:36px clamp(20px,5vw,64px); display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between; max-width:1080px; margin:0 auto;">
+    <a href="{{ homeHref }}" style="font-size:15px; font-weight:800; letter-spacing:.5px; color:#FFFFFF; text-decoration:none;">BEKI <span style="color:#D2A63C;">CREATIVE</span></a>
+    <div style="display:flex; gap:22px; flex-wrap:wrap; font-size:14px; color:rgba(235,235,245,.6);">
+      <a href="https://www.instagram.com/beki_creative" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">Instagram</a>
+      <a href="https://www.tiktok.com/@beki_creative" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">TikTok</a>
+      <a href="https://wa.me/251946253661" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">+251 94 625 3661</a>
+    </div>
+    <div style="font-size:13px; color:rgba(235,235,245,.4);">© 2026 Beki Creative</div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{ &quot;$preview&quot;: { &quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: 900 } }">
+class Component extends DCLogic {
+  state = { region: 'dubai' };
+  componentDidMount() {
+    try {
+      const region = new URLSearchParams(window.location.search).get('region');
+      if (region === 'dubai' || region === 'ethiopia') this.setState({ region });
+    } catch (e) {}
+  }
+  bindReveal = el => { if (el && !this._revealed) { this._revealed = true; import('./cinematic.js').then(m => m.reveal(el)).catch(() => {}); } };
+
+  renderVals() {
+    const q = `?region=${this.state.region}`;
+    return {
+      rootRef: this.bindReveal,
+      homeHref: 'Beki%20Creative%20-%20Dubai.dc.html',
+      packagesHref: `Packages.dc.html${q}`,
+      galleryHref: `Gallery.dc.html${q}`,
+      bookHref: `Book.dc.html${q}`
+    };
+  }
+}
+
+</script>
+</body>
+</html>

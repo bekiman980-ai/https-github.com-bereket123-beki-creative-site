@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Beki Creative — Photo &amp; Video Production in Addis Ababa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; -webkit-font-smoothing: antialiased; }
+    @keyframes shakeX {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+    @keyframes drift1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(4%,6%) scale(1.1); } }
+    @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-6%,4%) scale(1.14); } }
+  </style>
+</helmet>
+<x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="0,0" style="position:absolute; width:0; height:0; overflow:hidden;"></x-import>
+
+<div style="background:#0A0F1E; color:#FFFFFF; font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif; min-height:100vh; overflow-x:hidden;">
+
+  <!-- decorative blobs -->
+  <div style="position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none;">
+    <div style="position:absolute; width:70vmax; height:70vmax; left:-20%; top:-25%; border-radius:50%; filter:blur(90px); opacity:.55; background:radial-gradient(circle, rgba(32,71,136,.85), transparent 65%); animation:drift1 28s ease-in-out infinite;"></div>
+    <div style="position:absolute; width:55vmax; height:55vmax; right:-15%; top:10%; border-radius:50%; filter:blur(90px); opacity:.45; background:radial-gradient(circle, rgba(210,166,60,.45), transparent 65%); animation:drift2 34s ease-in-out infinite;"></div>
+  </div>
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:18px clamp(20px,5vw,64px); background:rgba(10,15,30,.72); backdrop-filter:blur(20px) saturate(1.6); -webkit-backdrop-filter:blur(20px) saturate(1.6); border-bottom:1px solid rgba(255,255,255,.08);">
+    <div style="font-size:19px; font-weight:800; letter-spacing:.5px;">BEKI <span style="color:#D2A63C;">CREATIVE</span></div>
+    <div style="display:flex; align-items:center; gap:clamp(14px,2vw,30px); flex-wrap:wrap;">
+      <a href="#work" style="color:rgba(235,235,245,.75); text-decoration:none; font-size:15px; font-weight:500;">Work</a>
+      <a href="#services" style="color:rgba(235,235,245,.75); text-decoration:none; font-size:15px; font-weight:500;">Services</a>
+      <a href="#process" style="color:rgba(235,235,245,.75); text-decoration:none; font-size:15px; font-weight:500;">Process</a>
+      <a href="#about" style="color:rgba(235,235,245,.75); text-decoration:none; font-size:15px; font-weight:500;">About</a>
+      <a href="#book" style="background:#FFFFFF; color:#0A0F1E; text-decoration:none; font-size:15px; font-weight:700; padding:10px 22px; border-radius:999px;">Book a Shoot</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:relative; z-index:1; padding:clamp(64px,10vw,120px) clamp(20px,5vw,64px) clamp(48px,6vw,80px); max-width:1180px; margin:0 auto; text-align:center;">
+    <div style="display:inline-flex; align-items:center; gap:8px; padding:8px 16px; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); font-size:13px; font-weight:600; letter-spacing:.3px; color:rgba(235,235,245,.75); margin-bottom:28px;">
+      <span style="width:8px; height:8px; border-radius:50%; background:linear-gradient(180deg,#078930 33%,#FCDD09 33% 66%,#DA121A 66%);"></span>
+      Addis Ababa, Ethiopia
+    </div>
+    <h1 style="font-size:clamp(40px,6.5vw,84px); font-weight:800; letter-spacing:-2px; line-height:1.03; margin:0 0 22px;">Make your brand<br/>look <span style="color:#D2A63C;">expensive.</span></h1>
+    <p style="font-size:clamp(17px,2vw,21px); color:rgba(235,235,245,.68); max-width:620px; margin:0 auto 40px; line-height:1.55;">Cinematic photo &amp; video production for brands, artists and businesses in Addis Ababa — shot, edited, and delivered fast.</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="#book" style="background:#FFFFFF; color:#0A0F1E; text-decoration:none; font-weight:700; font-size:17px; padding:16px 34px; border-radius:999px;">Book a Shoot</a>
+      <a href="https://wa.me/251946253661?text=Hello%20Beki%20Creative%2C%20I%20want%20to%20book%20a%20shoot." target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); color:#FFFFFF; text-decoration:none; font-weight:600; font-size:17px; padding:16px 28px; border-radius:999px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#30D158" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; max-width:640px; margin:64px auto 0;">
+      <div style="padding:22px 8px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:20px;"><div style="font-size:30px; font-weight:800; letter-spacing:-1px;">100+</div><div style="font-size:13px; color:rgba(235,235,245,.6); margin-top:2px;">Projects</div></div>
+      <div style="padding:22px 8px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:20px;"><div style="font-size:30px; font-weight:800; letter-spacing:-1px;">1M+</div><div style="font-size:13px; color:rgba(235,235,245,.6); margin-top:2px;">Views</div></div>
+      <div style="padding:22px 8px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:20px;"><div style="font-size:30px; font-weight:800; letter-spacing:-1px;">80+</div><div style="font-size:13px; color:rgba(235,235,245,.6); margin-top:2px;">Clients</div></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services" style="position:relative; z-index:1; padding:clamp(48px,6vw,80px) clamp(20px,5vw,64px); max-width:1180px; margin:0 auto;">
+    <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#D2A63C; margin-bottom:10px;">Services</div>
+    <h2 style="font-size:clamp(30px,4vw,46px); font-weight:800; letter-spacing:-1px; margin:0 0 40px; max-width:560px;">Packages built for how you actually shoot.</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px;">
+      <button onClick="{{ selectCombo }}" style="{{ comboCardStyle }}">
+        <div style="font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:#D2A63C; margin-bottom:10px;">Most Popular</div>
+        <div style="font-size:22px; font-weight:800; letter-spacing:-.4px; margin-bottom:8px;">Combo Package</div>
+        <div style="font-size:14px; color:rgba(235,235,245,.6); margin-bottom:22px; line-height:1.5;">1 video + 15 photos, 2 outfits</div>
+        <div style="font-size:20px; font-weight:800; margin-top:auto;">from 17,000 ETB</div>
+      </button>
+      <button onClick="{{ selectVideo }}" style="{{ videoCardStyle }}">
+        <div style="font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:rgba(235,235,245,.4); margin-bottom:10px;">&nbsp;</div>
+        <div style="font-size:22px; font-weight:800; letter-spacing:-.4px; margin-bottom:8px;">Video Only</div>
+        <div style="font-size:14px; color:rgba(235,235,245,.6); margin-bottom:22px; line-height:1.5;">1 hour coverage, 1 edited video</div>
+        <div style="font-size:20px; font-weight:800; margin-top:auto;">10,000 ETB</div>
+      </button>
+      <button onClick="{{ selectPhoto }}" style="{{ photoCardStyle }}">
+        <div style="font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:rgba(235,235,245,.4); margin-bottom:10px;">&nbsp;</div>
+        <div style="font-size:22px; font-weight:800; letter-spacing:-.4px; margin-bottom:8px;">Photo Only</div>
+        <div style="font-size:14px; color:rgba(235,235,245,.6); margin-bottom:22px; line-height:1.5;">Minimum 15 photos</div>
+        <div style="font-size:20px; font-weight:800; margin-top:auto;">500 ETB / photo</div>
+      </button>
+      <button onClick="{{ selectExtra }}" style="{{ extraCardStyle }}">
+        <div style="font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:rgba(235,235,245,.4); margin-bottom:10px;">&nbsp;</div>
+        <div style="font-size:22px; font-weight:800; letter-spacing:-.4px; margin-bottom:8px;">Same-Day Extra Video</div>
+        <div style="font-size:14px; color:rgba(235,235,245,.6); margin-bottom:22px; line-height:1.5;">Per extra video, same shooting day</div>
+        <div style="font-size:20px; font-weight:800; margin-top:auto;">+8,000 ETB</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div id="work" style="position:relative; z-index:1; padding:clamp(48px,6vw,80px) clamp(20px,5vw,64px); max-width:1180px; margin:0 auto;">
+    <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#D2A63C; margin-bottom:10px;">Recent Work</div>
+    <h2 style="font-size:clamp(30px,4vw,46px); font-weight:800; letter-spacing:-1px; margin:0 0 40px; max-width:560px;">Straight from the field.</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px;">
+      <div>
+        <image-slot id="et-port1" style="width:100%; aspect-ratio:9/14; border-radius:18px; display:block;" shape="rounded" radius="18" placeholder="Drop a thumbnail"></image-slot>
+        <div style="margin-top:12px; font-weight:700; font-size:15px;">Music Video — Stefanos Thomas</div>
+        <div style="font-size:13px; color:rgba(235,235,245,.55); margin-top:2px;">Artist · 1M+ followers</div>
+        <a href="https://www.instagram.com/reel/DVOqoMkiMEd/" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; font-size:13px; color:#D2A63C; text-decoration:none; font-weight:600;">Watch on Instagram ↗</a>
+      </div>
+      <div>
+        <image-slot id="et-port2" style="width:100%; aspect-ratio:9/14; border-radius:18px; display:block;" shape="rounded" radius="18" placeholder="Drop a thumbnail"></image-slot>
+        <div style="margin-top:12px; font-weight:700; font-size:15px;">Influencer Content — Milani</div>
+        <div style="font-size:13px; color:rgba(235,235,245,.55); margin-top:2px;">Dubai-based creator</div>
+        <a href="https://www.instagram.com/reel/DUNT-YNCt42/" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; font-size:13px; color:#D2A63C; text-decoration:none; font-weight:600;">Watch on Instagram ↗</a>
+      </div>
+      <div>
+        <image-slot id="et-port3" style="width:100%; aspect-ratio:9/14; border-radius:18px; display:block;" shape="rounded" radius="18" placeholder="Drop a thumbnail"></image-slot>
+        <div style="margin-top:12px; font-weight:700; font-size:15px;">Dance Content — Bebeleyn</div>
+        <div style="font-size:13px; color:rgba(235,235,245,.55); margin-top:2px;">Dubai dance influencer</div>
+        <a href="https://www.instagram.com/reel/DUHFSEECHpr/" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; font-size:13px; color:#D2A63C; text-decoration:none; font-weight:600;">Watch on Instagram ↗</a>
+      </div>
+      <div>
+        <image-slot id="et-port4" style="width:100%; aspect-ratio:9/14; border-radius:18px; display:block;" shape="rounded" radius="18" placeholder="Drop a thumbnail"></image-slot>
+        <div style="margin-top:12px; font-weight:700; font-size:15px;">Cinematic Reel</div>
+        <div style="font-size:13px; color:rgba(235,235,245,.55); margin-top:2px;">Watch on Instagram</div>
+        <a href="https://www.instagram.com/reel/DT2iG-mE1Tm/" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; font-size:13px; color:#D2A63C; text-decoration:none; font-weight:600;">Watch on Instagram ↗</a>
+      </div>
+      <div>
+        <image-slot id="et-port5" style="width:100%; aspect-ratio:9/14; border-radius:18px; display:block;" shape="rounded" radius="18" placeholder="Drop a thumbnail"></image-slot>
+        <div style="margin-top:12px; font-weight:700; font-size:15px;">Music Video — Challenge Clip</div>
+        <div style="font-size:13px; color:rgba(235,235,245,.55); margin-top:2px;">Watch on Instagram</div>
+        <a href="https://www.instagram.com/reel/DT8ES7jk-Ei/" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; font-size:13px; color:#D2A63C; text-decoration:none; font-weight:600;">Watch on Instagram ↗</a>
+      </div>
+      <div>
+        <image-slot id="et-port6" style="width:100%; aspect-ratio:9/14; border-radius:18px; display:block;" shape="rounded" radius="18" placeholder="Drop a thumbnail"></image-slot>
+        <div style="margin-top:12px; font-weight:700; font-size:15px;">Night Street Video — Dubai</div>
+        <div style="font-size:13px; color:rgba(235,235,245,.55); margin-top:2px;">Cinematic city shoot</div>
+        <a href="https://www.instagram.com/reel/DSS4ytUjPZG/" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; font-size:13px; color:#D2A63C; text-decoration:none; font-weight:600;">Watch on Instagram ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div id="process" style="position:relative; z-index:1; padding:clamp(48px,6vw,80px) clamp(20px,5vw,64px); max-width:1180px; margin:0 auto;">
+    <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#D2A63C; margin-bottom:10px;">Process</div>
+    <h2 style="font-size:clamp(30px,4vw,46px); font-weight:800; letter-spacing:-1px; margin:0 0 40px; max-width:560px;">From message to final cut.</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px;">
+      <div><div style="font-size:34px; font-weight:800; color:rgba(255,255,255,.18); margin-bottom:10px;">01</div><div style="font-weight:700; font-size:17px; margin-bottom:6px;">Inquire</div><div style="font-size:14px; color:rgba(235,235,245,.6); line-height:1.5;">Tell us your package and vision on WhatsApp or the form below.</div></div>
+      <div><div style="font-size:34px; font-weight:800; color:rgba(255,255,255,.18); margin-bottom:10px;">02</div><div style="font-weight:700; font-size:17px; margin-bottom:6px;">Confirm</div><div style="font-size:14px; color:rgba(235,235,245,.6); line-height:1.5;">We lock the date, location and final quote.</div></div>
+      <div><div style="font-size:34px; font-weight:800; color:rgba(255,255,255,.18); margin-bottom:10px;">03</div><div style="font-weight:700; font-size:17px; margin-bottom:6px;">Shoot</div><div style="font-size:14px; color:rgba(235,235,245,.6); line-height:1.5;">On the day, we handle the creative direction end to end.</div></div>
+      <div><div style="font-size:34px; font-weight:800; color:rgba(255,255,255,.18); margin-bottom:10px;">04</div><div style="font-weight:700; font-size:17px; margin-bottom:6px;">Deliver</div><div style="font-size:14px; color:rgba(235,235,245,.6); line-height:1.5;">Edited, color-graded, delivered — ready to post.</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT + TESTIMONIAL -->
+  <div id="about" style="position:relative; z-index:1; padding:clamp(48px,6vw,80px) clamp(20px,5vw,64px); max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:40px; align-items:start;">
+    <div>
+      <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#D2A63C; margin-bottom:10px;">About</div>
+      <h2 style="font-size:clamp(28px,3.6vw,40px); font-weight:800; letter-spacing:-1px; margin:0 0 18px;">Cinematic work, run like a business.</h2>
+      <p style="font-size:16px; color:rgba(235,235,245,.65); line-height:1.65; margin:0 0 16px;">Beki Creative shoots and edits photo &amp; video for artists, restaurants, real estate and personal brands in Addis Ababa. Fast turnarounds, clear pricing, and a look that reads premium on any feed.</p>
+      <p style="font-size:16px; color:rgba(235,235,245,.65); line-height:1.65; margin:0;">Every booking is confirmed directly with you on WhatsApp — no back-and-forth emails, no surprise costs.</p>
+    </div>
+    <div style="padding:32px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:24px;">
+      <div style="color:#FF9500; letter-spacing:3px; font-size:15px; margin-bottom:14px;">★★★★★</div>
+      <div style="font-size:19px; font-weight:600; letter-spacing:-.3px; line-height:1.5; margin-bottom:14px;">"Professional, fast, and the final video looked premium."</div>
+      <div style="font-size:14px; color:rgba(235,235,245,.55);">Client Name — Brand Campaign</div>
+    </div>
+  </div>
+
+  <!-- BOOK -->
+  <div id="book" style="position:relative; z-index:1; padding:clamp(48px,6vw,80px) clamp(20px,5vw,64px); max-width:760px; margin:0 auto;">
+    <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#D2A63C; margin-bottom:10px; text-align:center;">Book</div>
+    <h2 style="font-size:clamp(30px,4vw,46px); font-weight:800; letter-spacing:-1px; margin:0 0 12px; text-align:center;">Let's plan your shoot.</h2>
+    <p style="font-size:16px; color:rgba(235,235,245,.6); text-align:center; margin:0 0 40px;">Fill this out — we'll reply on WhatsApp with your final quote.</p>
+
+    <div style="padding:clamp(24px,4vw,40px); background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:28px;">
+      <div style="font-size:13px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:rgba(235,235,245,.5); margin-bottom:10px;">Selected package</div>
+      <div style="font-size:19px; font-weight:700; margin-bottom:26px;">{{ service }}</div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:16px;">
+        <div style="animation:{{ nameShakeAnim }};">
+          <label style="display:block; font-size:13px; font-weight:600; color:rgba(235,235,245,.55); margin-bottom:6px;">Name</label>
+          <input type="text" placeholder="Your name" value="{{ name }}" onChange="{{ onName }}" style="width:100%; box-sizing:border-box; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:13px 14px; color:#FFFFFF; font-size:16px; font-family:inherit; outline:none;" />
+        </div>
+        <div style="animation:{{ phoneShakeAnim }};">
+          <label style="display:block; font-size:13px; font-weight:600; color:rgba(235,235,245,.55); margin-bottom:6px;">Phone</label>
+          <input type="tel" placeholder="09... or +251..." value="{{ phone }}" onChange="{{ onPhone }}" style="width:100%; box-sizing:border-box; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:13px 14px; color:#FFFFFF; font-size:16px; font-family:inherit; outline:none;" />
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:13px; font-weight:600; color:rgba(235,235,245,.55); margin-bottom:6px;">Preferred date</label>
+        <input type="date" value="{{ date }}" onChange="{{ onDate }}" style="width:100%; box-sizing:border-box; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:13px 14px; color:#FFFFFF; font-size:16px; font-family:inherit; outline:none; color-scheme:dark;" />
+      </div>
+
+      <div style="margin-bottom:26px;">
+        <label style="display:block; font-size:13px; font-weight:600; color:rgba(235,235,245,.55); margin-bottom:6px;">Details</label>
+        <textarea placeholder="Idea, mood, deadline... (optional)" value="{{ notes }}" onChange="{{ onNotes }}" style="width:100%; box-sizing:border-box; min-height:90px; resize:none; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:13px 14px; color:#FFFFFF; font-size:16px; font-family:inherit; outline:none;"></textarea>
+      </div>
+
+      <button onClick="{{ submit }}" style="width:100%; background:#FFFFFF; color:#0A0F1E; border:none; font-weight:700; font-size:17px; padding:16px; border-radius:999px; cursor:pointer;">Send on WhatsApp</button>
+      <div style="font-size:13px; color:rgba(235,235,245,.5); text-align:center; margin-top:14px;">Tapping Send opens WhatsApp with your request already written.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="position:relative; z-index:1; border-top:1px solid rgba(255,255,255,.08); padding:40px clamp(20px,5vw,64px); display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between; max-width:1180px; margin:0 auto;">
+    <div style="font-size:15px; font-weight:800; letter-spacing:.5px;">BEKI <span style="color:#D2A63C;">CREATIVE</span></div>
+    <div style="display:flex; gap:22px; flex-wrap:wrap; font-size:14px; color:rgba(235,235,245,.6);">
+      <a href="https://www.instagram.com/beki_creative" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">Instagram</a>
+      <a href="https://www.tiktok.com/@beki_creative" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">TikTok</a>
+      <a href="mailto:bekiman980@gmail.com" style="color:inherit; text-decoration:none;">bekiman980@gmail.com</a>
+      <a href="https://wa.me/251946253661" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">+251 94 625 3661</a>
+    </div>
+    <div style="font-size:13px; color:rgba(235,235,245,.4);">© 2026 Beki Creative</div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    service: 'Combo Package',
+    name: '', phone: '', date: '', notes: '',
+    shakeName: false, shakePhone: false
+  };
+
+  selectPackage(name) {
+    this.setState({ service: name });
+    window.location.hash = 'book';
+  }
+
+  handleSubmit = () => {
+    const { name, phone, service, date, notes } = this.state;
+    const nameBad = !name.trim();
+    const phoneBad = phone.trim().length < 9;
+    if (nameBad || phoneBad) {
+      this.setState({ shakeName: nameBad, shakePhone: phoneBad });
+      setTimeout(() => this.setState({ shakeName: false, shakePhone: false }), 450);
+      return;
+    }
+    const lines = [
+      'Hello Beki Creative,',
+      '',
+      'New booking request:',
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Package: ${service}`,
+      `Date: ${date || 'Flexible'}`,
+      `Details: ${notes.trim() || '-'}`,
+      '',
+      'Please send me the final price.'
+    ];
+    window.open(`https://wa.me/251946253661?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+  };
+
+  cardStyle(active) {
+    return [
+      'text-align:left', 'display:flex', 'flex-direction:column', 'cursor:pointer',
+      'font-family:inherit', 'padding:26px', 'border-radius:22px',
+      active ? 'background:rgba(210,166,60,.14)' : 'background:rgba(255,255,255,.05)',
+      active ? 'border:1px solid rgba(210,166,60,.55)' : 'border:1px solid rgba(255,255,255,.1)',
+      'color:#FFFFFF', 'min-height:190px'
+    ].join(';');
+  }
+
+  renderVals() {
+    const s = this.state;
+    return {
+      service: s.service,
+      name: s.name, phone: s.phone, date: s.date, notes: s.notes,
+      onName: e => this.setState({ name: e.target.value }),
+      onPhone: e => this.setState({ phone: e.target.value }),
+      onDate: e => this.setState({ date: e.target.value }),
+      onNotes: e => this.setState({ notes: e.target.value }),
+      selectCombo: () => this.selectPackage('Combo Package'),
+      selectVideo: () => this.selectPackage('Video Only'),
+      selectPhoto: () => this.selectPackage('Photo Only'),
+      selectExtra: () => this.selectPackage('Same-Day Extra Video'),
+      comboCardStyle: this.cardStyle(s.service === 'Combo Package'),
+      videoCardStyle: this.cardStyle(s.service === 'Video Only'),
+      photoCardStyle: this.cardStyle(s.service === 'Photo Only'),
+      extraCardStyle: this.cardStyle(s.service === 'Same-Day Extra Video'),
+      nameShakeAnim: s.shakeName ? 'shakeX .4s ease' : 'none',
+      phoneShakeAnim: s.shakePhone ? 'shakeX .4s ease' : 'none',
+      submit: this.handleSubmit
+    };
+  }
+}
+
+</script>
+</body>
+</html>
